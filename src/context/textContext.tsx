@@ -1,6 +1,15 @@
 import { createContext, useState } from "react";
 
-const textContext = createContext({});
+
+interface defaultValuesProps {
+    text: string,
+    setText: any
+}
+const defaultValues: defaultValuesProps = {
+    text: "",
+    setText: (e: string) => (e)
+}
+export const textContext = createContext(defaultValues);
 
 const TextProvider = (props: { children: any }) => {
     const [text, setText] = useState<string>("");
@@ -11,3 +20,5 @@ const TextProvider = (props: { children: any }) => {
         {props.children}
     </textContext.Provider>)
 }
+
+export default TextProvider;
